@@ -1,5 +1,6 @@
 #all distances in Angstrom
 # in defining the constants everything after '_' is a subscript, numbers not written after '_' is super script
+# function V is the main PES function, which can to be called to evaluate the PES
 using OdsIO
 using Plots
 plotlyjs()
@@ -267,6 +268,8 @@ S1(r_5, r_6, r01_5=R01[5], r01_6 = R01[6]) = ( 1.0 - tanh( w_1*(r_5 -r01_5)^2 )*
 S2(r_5, r_6, r01_5=R01[5], r01_6 = R01[6]) = tanh( w_2*(r_5 - r01_5)^2 )*tanh( w_2*(r_6 - r01_6)^2 )
 ##
 function V(Var=[R01, O01, T01, alp_eq])
+    ## The main Potential Function
+    # This function has to be called to evaluate the full PES
     R = Var[1]
     O = Var[2]
     T = Var[3]
